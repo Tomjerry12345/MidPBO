@@ -87,40 +87,61 @@ class Eksekutif(mahasiswa) :
         print("Diskon : " , self.diskon)
         print("Total Yang Dibayar : " , self.totalBayar)
 
+print("Pilih Kelas : ")
+print("1.Kelas Reguler")
+print("2.Kelas Eksekutif")
+pil = int(input("Silahkan Pilih : "))
 
-print("====================Data Reguler=======================")
-semester = int(input("Input Semester : "))
-jumlahsks = int(input("Input Jumlah Sks : "))
-biayaDaftarUlang = int(input("Input Biaya Daftar Ulang : "))
-danaKemahasiswaan = int(input("Input Dana Kemahasiswaan : "))
-bop = int(input("Input BOP : "))
+if pil == 1 :
 
-Reg = Reguler(semester , jumlahsks , biayaDaftarUlang , danaKemahasiswaan , bop)
-Reg.inputMahasiswa()
+    print("====================Data Reguler=======================")
+    semester = int(input("Input Semester : "))
+    jumlahsks = int(input("Input Jumlah Sks : "))
+    biayaDaftarUlang = int(input("Input Biaya Daftar Ulang : "))
+    danaKemahasiswaan = int(input("Input Dana Kemahasiswaan : "))
+    bop = int(input("Dana BOP : "))
 
-print("====================Data Eksekutif=======================")
-
-periode = input("Input Periode : ")
-biayaAngsuranBOP = int(input("Input Biaya Angsuran BOP : "))
-jumlahsks1 = int(input("Input Jumlah Sks : "))
-jumlahMataKuliah = int(input("Jumlah Matakuliah : "))
-
-VIP = Eksekutif(periode , biayaAngsuranBOP , jumlahsks1 , jumlahMataKuliah)
-VIP.inputMahasiswa()
-
-if Reg.entryReguler() == 1 and VIP.entryEksekutif() == 1 :
-    print("Kwitansi Pembayaran Kelas Reguler")
-    print("=================================")
-    Reg.hitungReguler()
-    Reg.cetakReguler()
+    Reg = Reguler(semester , jumlahsks , biayaDaftarUlang , danaKemahasiswaan , bop)
+    Reg.inputMahasiswa()
     print()
     print()
-    print("Kwitansi Pembayaran Kelas Eksekutif")
-    print("====================================")
-    VIP.hitungEksekutif()
-    VIP.cetakEksekutif()
-else:
-    print("jumlah sks maksimal 24 silahkan coba kembali")
+
+    if Reg.entryReguler() == 1 :
+        print("Kwitansi Pembayaran Kelas Reguler")
+        print("=================================")
+        Reg.hitungReguler()
+        Reg.cetakReguler()
+        print()
+    else :
+        print("jumlah sks maksimal 24 silahkan coba kembali")
+        print("Terima Kasih")
+
+elif pil == 2 :
+
+    print("====================Data Eksekutif=======================")
+
+    periode = input("Input Periode : ")
+    biayaAngsuranBOP = int(input("Input Biaya Angsuran BOP : "))
+    jumlahsks1 = int(input("Input Jumlah Sks : "))
+    jumlahMataKuliah = int(input("Jumlah Matakuliah : "))
+
+    VIP = Eksekutif(periode , biayaAngsuranBOP , jumlahsks1 , jumlahMataKuliah)
+    VIP.inputMahasiswa()
+    print()
+    print()
+
+    if VIP.entryEksekutif() == 1 :
+
+        print()
+        print("Kwitansi Pembayaran Kelas Eksekutif")
+        print("====================================")
+        VIP.hitungEksekutif()
+        VIP.cetakEksekutif()
+    else:
+        print("jumlah sks maksimal 24 silahkan coba kembali")
+        print("Terima Kasih")
+else :
+    print("Pilihan Tidak Ada Silahkan Ulang Kembali")
     print("Terima Kasih")
 
 
